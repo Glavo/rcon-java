@@ -1,5 +1,8 @@
 # RCON Java
 
+[![Build Status](https://travis-ci.com/Glavo/rcon-java.svg?branch=master)](https://travis-ci.com/Glavo/rcon-java)
+[ ![Download](https://api.bintray.com/packages/glavo/maven/rcon-java/images/download.svg) ](https://bintray.com/glavo/maven/rcon-java/_latestVersion)
+
 A Java Minecraft RCON client, 
 it based on [rkon-core](https://github.com/Kronos666/rkon-core/).
 
@@ -38,4 +41,46 @@ RCON> help
 
 RCON> exit
 Bye bye!
+```
+
+## Download
+
+[GitHub release page](https://github.com/Glavo/rcon-java/releases) provides pre-built jar files,
+And native executable files that can be run directly without the Java runtime environment.
+
+You can also add it as a dependency library to your project: 
+
+First, you need to add the jcenter repository to your build:
+
+Maven:
+```xml
+<repositories>
+  <repository>
+    <id>jcenter</id>
+    <url>https://jcenter.bintray.com</url>
+  </repository>
+</repositories>
+```
+
+Gradle:
+```groovy
+repositories {
+    jcenter()
+}
+```
+
+Then add dependencies:
+
+Maven:
+```xml
+<dependency>
+  <groupId>org.glavo</groupId>
+  <artifactId>rcon-java</artifactId>
+  <version>2.0.0</version>
+</dependency>
+```
+
+Gradle:
+```groovy
+implementation group: 'org.glavo', name: 'rcon-java', version: '2.0.1'
 ```

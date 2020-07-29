@@ -212,8 +212,11 @@ public final class Rcon implements Closeable {
                     }
                     try {
                         String a = rcon.command(c);
+
                         System.out.println(a);
-                        System.out.println();
+                        if (!a.isEmpty()) {
+                            System.out.println();
+                        }
                     } catch (Throwable e) {
                         System.err.println(e.getMessage());
                         System.err.println();
