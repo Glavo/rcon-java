@@ -46,7 +46,7 @@ Bye bye!
 ## Download
 
 [GitHub release page](https://github.com/Glavo/rcon-java/releases) provides pre-built jar files,
-And native executable files that can be run directly without the Java runtime environment.
+and native executable files that can be run directly without the Java runtime environment.
 
 You can also add it as a dependency library to your project: 
 
@@ -76,7 +76,7 @@ Maven:
 <dependency>
   <groupId>org.glavo</groupId>
   <artifactId>rcon-java</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
 </dependency>
 ```
 
