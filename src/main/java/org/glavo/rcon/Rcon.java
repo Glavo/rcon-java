@@ -122,7 +122,12 @@ public final class Rcon implements Closeable {
             throw new IllegalArgumentException("Payload can't be null or empty");
         }
 
-        RconPacket response = this.send(RconPacket.SERVERDATA_EXECCOMMAND, payload.getBytes(charset));
+        byte[] bytes = payload.getBytes(charset);
+        if (bytes.length > 1446) {
+            throw new IllegalArgumentException("Payload too long");
+        }
+
+        RconPacket response = this.send(RconPacket.SERVERDATA_EXECCOMMAND, bytes);
 
         return new String(response.getPayload(), this.charset);
     }

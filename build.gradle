@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 group 'org.glavo'
-version '2.0.2-SHAPSHOT'
+version '2.0.2'
 
 modularity.mixedJavaRelease 8
 
