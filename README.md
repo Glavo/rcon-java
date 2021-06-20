@@ -1,7 +1,7 @@
 # RCON Java
 
 [![Build Status](https://travis-ci.com/Glavo/rcon-java.svg?branch=master)](https://travis-ci.com/Glavo/rcon-java)
-[ ![Download](https://api.bintray.com/packages/glavo/maven/rcon-java/images/download.svg) ](https://bintray.com/glavo/maven/rcon-java/_latestVersion)
+[![](https://jitpack.io/v/Glavo/rcon-java.svg)](https://jitpack.io/#Glavo/rcon-java)
 
 A Java Minecraft RCON client, 
 it based on [rkon-core](https://github.com/Kronos666/rkon-core/).
@@ -50,14 +50,14 @@ and native executable files that can be run directly without the Java runtime en
 
 You can also add it as a dependency library to your project: 
 
-First, you need to add the jcenter repository to your build:
+First, you need to add the jitpack repository to your build:
 
 Maven:
 ```xml
 <repositories>
-  <repository>
-    <id>jcenter</id>
-    <url>https://jcenter.bintray.com</url>
+	<repository>
+		<id>jitpack.io</id>
+	  <url>https://jitpack.io</url>
   </repository>
 </repositories>
 ```
@@ -65,7 +65,7 @@ Maven:
 Gradle:
 ```groovy
 repositories {
-    jcenter()
+    maven { url 'https://jitpack.io' }
 }
 ```
 
