@@ -76,11 +76,11 @@ Maven:
 <dependency>
   <groupId>org.glavo</groupId>
   <artifactId>rcon-java</artifactId>
-  <version>2.0.1</version>
+  <version>2.0.2</version>
 </dependency>
 ```
 
 Gradle:
 ```groovy
-implementation group: 'org.glavo', name: 'rcon-java', version: '2.0.1'
+implementation group: 'org.glavo', name: 'rcon-java', version: '2.0.2'
 ```
