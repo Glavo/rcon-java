@@ -1,8 +1,10 @@
-import java.io.RandomAccessFile
-
 plugins {
-    java
-    `maven-publish`
+    id("java-library")
+    id("org.glavo.compile-module-info-plugin") version "2.0"
+    id("maven-publish")
+    id("signing")
+    id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
+    id("org.glavo.load-maven-publish-properties") version "0.1.0"
 }
 
 group = "org.glavo"
@@ -13,20 +15,7 @@ java {
 }
 
 tasks.compileJava {
-    options.release.set(9)
-
-    doLast {
-        val tree = fileTree(destinationDirectory)
-        tree.include("**/*.class")
-        tree.exclude("module-info.class")
-        tree.forEach {
-            RandomAccessFile(it, "rw").use { rf ->
-                rf.seek(7)   // major version
-                rf.write(51)   // java 7
-                rf.close()
-            }
-        }
-    }
+    options.release.set(8)
 }
 
 tasks.jar {
