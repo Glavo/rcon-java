@@ -8,10 +8,12 @@ plugins {
 }
 
 group = "org.glavo"
-version = "2.1"
+version = "2.1" + "-SNAPSHOT"
+description = "A Java RCON client"
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 tasks.compileJava {
