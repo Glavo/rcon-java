@@ -1,7 +1,7 @@
 # RCON Java
 
 [![Gradle Check](https://github.com/Glavo/rcon-java/actions/workflows/check.yml/badge.svg)](https://github.com/Glavo/rcon-java/actions/workflows/check.yml)
-[![](https://jitpack.io/v/Glavo/rcon-java.svg)](https://jitpack.io/#Glavo/rcon-java)
+[![Maven Central Version](https://img.shields.io/maven-central/v/org.glavo/rcon-java)](https://search.maven.org/artifact/org.glavo/rcon-java)
 
 A Java Minecraft RCON client, 
 it based on [rkon-core](https://github.com/Kronos666/rkon-core/).
