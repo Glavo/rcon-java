@@ -34,6 +34,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public final class Rcon implements Closeable {
 
@@ -41,7 +42,7 @@ public final class Rcon implements Closeable {
 
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
-    private final Object sync = new Object();
+    private final ReentrantLock lock = new ReentrantLock();
     private final Random rand = new Random();
 
     private int requestId;
@@ -97,12 +98,15 @@ public final class Rcon implements Closeable {
         }
 
         // Connect to the rcon server
-        synchronized (sync) {
+        lock.lock();
+        try {
             // New random request id
             this.requestId = rand.nextInt();
 
             // We can't reuse a socket, so we need a new one
             this.socket = new Socket(host, port);
+        } finally {
+            lock.unlock();
         }
 
         // Send the auth packet
@@ -118,8 +122,11 @@ public final class Rcon implements Closeable {
      * Disconnect from the current server
      */
     public void disconnect() throws IOException {
-        synchronized (sync) {
+        lock.lock();
+        try {
             this.socket.close();
+        } finally {
+            lock.unlock();
         }
     }
 
@@ -155,8 +162,11 @@ public final class Rcon implements Closeable {
     }
 
     private RconPacket send(int type, byte[] payload) throws IOException {
-        synchronized (sync) {
+        lock.lock();
+        try {
             return RconPacket.send(this, type, payload);
+        } finally {
+            lock.unlock();
         }
     }
 
