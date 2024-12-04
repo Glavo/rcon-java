@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.glavo"
-version = "2.1" + "-SNAPSHOT"
+version = "3.0" + "-SNAPSHOT"
 description = "A Java RCON client"
 
 java {
@@ -51,6 +51,31 @@ configure<PublishingExtension> {
                     }
                 }
             }
+        }
+    }
+}
+
+tasks.withType<GenerateModuleMetadata> {
+    enabled = false
+}
+
+if (rootProject.ext.has("signing.key")) {
+    signing {
+        useInMemoryPgpKeys(
+            rootProject.ext["signing.keyId"].toString(),
+            rootProject.ext["signing.key"].toString(),
+            rootProject.ext["signing.password"].toString(),
+        )
+        sign(publishing.publications["maven"])
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            stagingProfileId.set(rootProject.ext["sonatypeStagingProfileId"].toString())
+            username.set(rootProject.ext["sonatypeUsername"].toString())
+            password.set(rootProject.ext["sonatypePassword"].toString())
         }
     }
 }

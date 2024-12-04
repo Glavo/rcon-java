@@ -85,7 +85,7 @@ public final class Rcon implements Closeable {
      *
      * @param address  Rcon server address
      * @param password Rcon server password
-     * @since 0.3.0
+     * @since 3.0
      */
     public void connect(SocketAddress address, byte[] password) throws IOException, AuthenticationException {
         // Connect to the rcon server
@@ -193,7 +193,7 @@ public final class Rcon implements Closeable {
     }
 
     /**
-     * @since 0.3.0
+     * @since 3.0
      */
     public void setTimeout(int timeout) {
         this.timeout = timeout;
