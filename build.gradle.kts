@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.glavo"
-version = "3.0"// + "-SNAPSHOT"
+version = "3.1" + "-SNAPSHOT"
 description = "A Java RCON client"
 
 java {

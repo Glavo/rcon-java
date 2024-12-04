@@ -48,39 +48,18 @@ Bye bye!
 [GitHub release page](https://github.com/Glavo/rcon-java/releases) provides pre-built jar files,
 and native executable files that can be run directly without the Java runtime environment.
 
-You can also add it as a dependency library to your project: 
-
-First, you need to add the jitpack repository to your build:
-
-Maven:
-```xml
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-</repositories>
-```
-
-Gradle:
-```groovy
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-```
-
-Then add dependencies:
+You can also add it as a dependency library to your project:
 
 Maven:
 ```xml
 <dependency>
   <groupId>org.glavo</groupId>
   <artifactId>rcon-java</artifactId>
-  <version>2.0.2</version>
+  <version>3.0</version>
 </dependency>
 ```
 
 Gradle:
-```groovy
-implementation group: 'org.glavo', name: 'rcon-java', version: '2.0.2'
+```kotlin
+implementation("org.glavo:rcon-java:3.0")
 ```
