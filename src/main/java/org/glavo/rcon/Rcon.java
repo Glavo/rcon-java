@@ -27,6 +27,7 @@ import java.io.Closeable;
 import java.io.Console;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
@@ -48,10 +49,10 @@ public final class Rcon implements Closeable {
     private int requestId;
     private Socket socket;
 
-    private Charset charset;
+    private Charset charset = DEFAULT_CHARSET;
+    private int timeout = 0;
 
     public Rcon() {
-        this.charset = Rcon.DEFAULT_CHARSET;
     }
 
     public Rcon(String host, String password) throws IOException, AuthenticationException {
@@ -74,9 +75,6 @@ public final class Rcon implements Closeable {
      * @param password Rcon server password
      */
     public Rcon(String host, int port, byte[] password) throws IOException, AuthenticationException {
-        // Default charset is utf8
-        this.charset = Rcon.DEFAULT_CHARSET;
-
         // Connect to host
         this.connect(host, port, password);
     }
@@ -104,7 +102,11 @@ public final class Rcon implements Closeable {
             this.requestId = rand.nextInt();
 
             // We can't reuse a socket, so we need a new one
-            this.socket = new Socket(host, port);
+            this.socket = new Socket();
+            this.socket.connect(new InetSocketAddress(host, port), this.timeout);
+            if (this.timeout > 0) {
+                this.socket.setSoTimeout(this.timeout);
+            }
         } finally {
             lock.unlock();
         }
@@ -184,6 +186,10 @@ public final class Rcon implements Closeable {
 
     public void setCharset(Charset charset) {
         this.charset = charset == null ? Rcon.DEFAULT_CHARSET : charset;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
     }
 
     public static void main(String[] args) {
