@@ -6,6 +6,9 @@
 A Java Minecraft RCON client, 
 it based on [rkon-core](https://github.com/Kronos666/rkon-core/).
 
+This project can be used as a command line application to remotely connect to the Minecraft server, 
+and can also be imported by other Java projects as a library.
+
 ## Usage
 
 ### Use it as a library
