@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -82,19 +83,11 @@ public final class Rcon implements Closeable {
     /**
      * Connect to a rcon server
      *
-     * @param host     Rcon server address
-     * @param port     Rcon server port
+     * @param address  Rcon server address
      * @param password Rcon server password
+     * @since 0.3.0
      */
-    public void connect(String host, int port, byte[] password) throws IOException, AuthenticationException {
-        if (host == null || host.trim().isEmpty()) {
-            throw new IllegalArgumentException("Host can't be null or empty");
-        }
-
-        if (port < 1 || port > 65535) {
-            throw new IllegalArgumentException("Port is out of range");
-        }
-
+    public void connect(SocketAddress address, byte[] password) throws IOException, AuthenticationException {
         // Connect to the rcon server
         lock.lock();
         try {
@@ -103,7 +96,7 @@ public final class Rcon implements Closeable {
 
             // We can't reuse a socket, so we need a new one
             this.socket = new Socket();
-            this.socket.connect(new InetSocketAddress(host, port), this.timeout);
+            this.socket.connect(address, this.timeout);
             if (this.timeout > 0) {
                 this.socket.setSoTimeout(this.timeout);
             }
@@ -118,6 +111,17 @@ public final class Rcon implements Closeable {
         if (res.getRequestId() == -1) {
             throw new AuthenticationException("Password rejected by server");
         }
+    }
+
+    /**
+     * Connect to a rcon server
+     *
+     * @param host     Rcon server address
+     * @param port     Rcon server port
+     * @param password Rcon server password
+     */
+    public void connect(String host, int port, byte[] password) throws IOException, AuthenticationException {
+        connect(new InetSocketAddress(host, port), password);
     }
 
     /**
@@ -188,6 +192,9 @@ public final class Rcon implements Closeable {
         this.charset = charset == null ? Rcon.DEFAULT_CHARSET : charset;
     }
 
+    /**
+     * @since 0.3.0
+     */
     public void setTimeout(int timeout) {
         this.timeout = timeout;
     }
