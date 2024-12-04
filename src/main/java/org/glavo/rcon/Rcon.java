@@ -49,7 +49,6 @@ public final class Rcon implements Closeable {
 
     private Charset charset;
 
-
     public Rcon() {
         this.charset = Rcon.DEFAULT_CHARSET;
     }
@@ -176,7 +175,6 @@ public final class Rcon implements Closeable {
     public void setCharset(Charset charset) {
         this.charset = charset == null ? Rcon.DEFAULT_CHARSET : charset;
     }
-
 
     public static void main(String[] args) {
         final Console console = System.console();
