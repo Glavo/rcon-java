@@ -1,6 +1,6 @@
 # RCON Java
 
-![Gradle Check](https://github.com/Glavo/rcon-java/workflows/Gradle%20Check/badge.svg?branch=main)
+[![Gradle Check](https://github.com/Glavo/rcon-java/actions/workflows/check.yml/badge.svg)](https://github.com/Glavo/rcon-java/actions/workflows/check.yml)
 [![](https://jitpack.io/v/Glavo/rcon-java.svg)](https://jitpack.io/#Glavo/rcon-java)
 
 A Java Minecraft RCON client, 
