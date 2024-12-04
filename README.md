@@ -63,3 +63,14 @@ Gradle:
 ```kotlin
 implementation("org.glavo:rcon-java:3.0")
 ```
+
+## Especially thanks
+
+<img alt="PLCT Logo" src="./PLCT.svg" width="200" height="200">
+
+Thanks to [PLCT Lab](https://plctlab.org) for supporting me.
+
+![IntelliJ IDEA logo](https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA.svg)
+
+This project is developed using JetBrains IDEA.
+Thanks to JetBrains for providing me with a free license, which is a strong support for me.
