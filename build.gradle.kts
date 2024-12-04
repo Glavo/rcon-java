@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.glavo"
-version = "3.0" + "-SNAPSHOT"
+version = "3.0"// + "-SNAPSHOT"
 description = "A Java RCON client"
 
 java {
@@ -37,6 +37,10 @@ configure<PublishingExtension> {
             from(components["java"])
 
             pom {
+                name.set(project.name)
+                description.set(project.description)
+                url.set("https://github.com/Glavo/rcon-java")
+
                 licenses {
                     license {
                         name.set("MIT")
@@ -49,6 +53,10 @@ configure<PublishingExtension> {
                         name.set("Glavo")
                         email.set("zjx001202@gmail.com")
                     }
+                }
+
+                scm {
+                    url.set("https://github.com/Glavo/rcon-java")
                 }
             }
         }
