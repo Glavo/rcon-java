@@ -147,7 +147,7 @@ final class RconPacket {
             dis.read(new byte[2]);
 
             return new RconPacket(requestId, type, payload);
-        } catch (BufferUnderflowException | EOFException e) {
+        } catch (BufferUnderflowException | EOFException | NegativeArraySizeException e) {
             throw new MalformedPacketException("Cannot read the whole packet");
         }
     }
